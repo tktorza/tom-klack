@@ -48,6 +48,10 @@ li{min-width:0}
 li b{font-weight:600}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px}
 .chips{display:flex;flex-wrap:wrap;gap:5px}
+.cover dl{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 14px;margin:0;font-size:13.5px}
+.cover dt{font-weight:600}
+.cover dd{margin:0}
+@media print{.cover dl{grid-template-columns:92px minmax(0,1fr);font-size:10.8px;gap:2px 12px}}
 .chip{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 9px}
 .small{font-size:12.5px}
 @media (max-width:640px){
@@ -55,11 +59,11 @@ li b{font-weight:600}
   .job{grid-template-columns:minmax(0,1fr);gap:2px}
   .two{grid-template-columns:minmax(0,1fr)}
 }
-@page{size:Letter;margin:0.45in 0.5in}
+@page{size:Letter;margin:0.4in 0.5in}
 @media print{
   :root{--bg:#fff;--paper:#fff;--ink:#0F1A2B;--muted:#556275;--line:#D8DEE7;--accent:#1F4FD8}
-  body{padding:0;font-size:11.2px;line-height:1.45}
-  .page{border:0;border-radius:0;padding:0;gap:15px;max-width:none}
+  body{padding:0;font-size:11px;line-height:1.4}
+  .page{border:0;border-radius:0;padding:0;gap:12px;max-width:none}
   header.cv{padding-bottom:9px;gap:4px}
   header.cv h1{font-size:30px}
   .summary{font-size:11.8px}.summary b{font-size:13.5px}.summary .seek{font-size:11px;margin-top:5px}.summary .seek b{font-size:inherit}
@@ -77,7 +81,6 @@ li b{font-weight:600}
 </head>
 <body>
 
-
 <main class="page">
   <header class="cv">
     <h1>Tom Ktorza</h1>
@@ -85,15 +88,23 @@ li b{font-weight:600}
     <div class="contact">
       <span>tom@klack.io</span>
       <a href="https://www.linkedin.com/in/tom-ktorza-8a8b91113/" target="_blank" rel="noopener">linkedin.com/in/tom-ktorza-8a8b91113</a>
-      <a href="https://calendar.app.google/foh4vzQRrdMpk8wx8" target="_blank" rel="noopener">Book a 30 min call</a>
     </div>
   </header>
 
   <div class="summary">
     <b>Fractional Chief of Staff to startup CEOs.</b>
-    I bridge the CEO and the tech team, bring the vision and the execution back together, and build what's missing: product, team, go-to-market. Ten years, 20+ companies, from pre-seed startups to Series A and established groups.
+    Ten years founding and running companies, and stepping into 20+ others at the critical moment. When it's chaos, I get the company moving again.
     <span class="seek"><b>Available now for missions</b>: right hand to the CEO a few days a week, taking over a struggling product or tech team, setting up go-to-market.</span>
   </div>
+
+  <section class="cover">
+    <h2>What I cover</h2>
+    <dl>
+      <dt>Business</dt><dd>Founder of my own companies. I've sold, priced, hired and secured funding, and I know what a product needs to sell.</dd>
+      <dt>Product &amp; tech</dt><dd>Technical expert: shipping software since I was 19, an AI product demoed at CES, an algorithm that beat a team of consultants, 15+ broken products rescued, 6 tech teams built from the first hire. I challenge the architecture and push the team until it ships.</dd>
+      <dt>Chaos</dt><dd>When everything is on fire, I set the priorities, take the load off the CEO and get the team delivering.</dd>
+    </dl>
+  </section>
 
   <section>
     <h2>Experience</h2>
@@ -104,11 +115,11 @@ li b{font-weight:600}
         <h3>Klack <span>· Founder &amp; CEO · Paris, then New York</span></h3>
         <p class="ctx">Product and operations studio. Missions inside 20+ companies, from early-stage startups to industrial groups.</p>
         <ul>
-          <li><b>Saved a fundraise one week before closing.</b> The product was broken and nobody was in charge of the team. I came in with the right engineer, we fixed the product in two days, and they closed the round the next week.</li>
-          <li><b>Built a B2B platform from zero.</b> Set the vision and strategy before anything existed, then hired and led a 3-person tech team to production and a live beta.</li>
+          <li><b>Saved a fundraise one week before signing.</b> I came in with the right engineer, we fixed the product in two days, and they signed the round the next week.</li>
+          <li><b>Built a B2B platform from scratch</b> for a company with no product and no tech team: set the vision, hired the team and took it to production with live users.</li>
           <li><b>Realigned an energy renovation group</b> with its leadership, then created its technology, marketing and sales department and lead engine.</li>
           <li><b>Turned a consulting firm's method into an algorithm</b> that beat its team of consultants (Klack's pricing product, as CTO then CEO).</li>
-          <li>Hired and ran tech teams for consumer apps (React Native). Took over failing projects and got them working (packaging, food e-commerce, real estate).</li>
+          <li><b>Brought over-engineered startup infrastructures back to what they needed</b>, and their cloud bills with it. Took over failing projects and got them working (packaging, food e-commerce, real estate).</li>
         </ul>
       </div>
     </div>
@@ -142,8 +153,7 @@ li b{font-weight:600}
       <div>
         <h3>Other ventures</h3>
         <ul>
-          <li><b>Passoire.io</b>: green renovation finance with AI scoring. Selected for the 42 Incubator at Station F.</li>
-          <li><b>Sharyz</b>: wedding photo app, live on the App Store, backed by a Bpifrance innovation grant.</li>
+          <li><b>Passoire.io</b>: green renovation finance with AI scoring, 42 Incubator at Station F. <b>Sharyz</b>: wedding photo app on the App Store, Bpifrance grant.</li>
           <li><b>Pushlane</b>: co-founder, automated marketing funnels for mobile apps. <b>Klarn</b>: non-dilutive financing for startups, first mandate in 18 days.</li>
         </ul>
       </div>
@@ -153,13 +163,12 @@ li b{font-weight:600}
   <div class="two">
     <section>
       <h2>Education</h2>
-      <div class="small"><b>42 Paris</b>, 2015 · 2019<br>Architect in digital technologies, state-certified. First of my class on a cybersecurity project. I never touched a computer before 18.</div>
-      <div class="small"><b>Valtech</b>, 2016 · Agile methods</div>
+      <div class="small"><b>42 Paris</b>, 2015 · 2019<br>Architect in digital technologies, state-certified. First of my class on a cybersecurity project. I never wrote a line of code before 18.</div>
     </section>
     <section>
       <h2>Skills</h2>
       <div class="chips">
-        <span class="chip">CEO support &amp; operations</span><span class="chip">Product strategy</span><span class="chip">Go-to-market &amp; sales</span><span class="chip">Hiring &amp; team leadership</span><span class="chip">Crisis management</span><span class="chip">AI &amp; data</span><span class="chip">Grants &amp; fundraising support</span>
+        <span class="chip">CEO support &amp; operations</span><span class="chip">Product strategy</span><span class="chip">Software architecture</span><span class="chip">Go-to-market &amp; sales</span><span class="chip">Building tech teams</span><span class="chip">Crisis management</span><span class="chip">AI &amp; data</span><span class="chip">Grants &amp; fundraising support</span>
       </div>
       <div class="small"><b>Languages</b> · French (native), English (professional)</div>
     </section>

@@ -3,21 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tom Ktorza, Fractional Chief of Staff</title>
-<meta name="description" content="Fractional Chief of Staff for startup CEOs. I bridge the CEO and the tech team, realign the vision, and turn it into a product that sells.">
-<meta property="og:title" content="Tom Ktorza, Fractional Chief of Staff">
-<meta property="og:description" content="Fractional Chief of Staff for startup CEOs. I bridge the CEO and the tech team, realign the vision, and turn it into a product that sells.">
+<title>Tom Ktorza, Startup Operating Partner</title>
+<meta name="description" content="Startup Operating Partner. Something's stuck and nobody knows why. I find out, and I fix it.">
+<meta property="og:title" content="Tom Ktorza, Startup Operating Partner">
+<meta property="og:description" content="Startup Operating Partner. Something's stuck and nobody knows why. I find out, and I fix it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tom.klack.io/">
 <meta property="og:image" content="https://tom.klack.io/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="627">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:site_name" content="Tom Ktorza">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:alt" content="Tom Ktorza, Startup Operating Partner. Something's stuck and nobody knows why. I find out, and I fix it.">
+<meta name="twitter:title" content="Tom Ktorza, Startup Operating Partner">
+<meta name="twitter:description" content="Startup Operating Partner. Something's stuck and nobody knows why. I find out, and I fix it.">
+<meta name="twitter:image" content="https://tom.klack.io/og.png">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#1F4FD8">
+<meta name="author" content="Tom Ktorza">
 <link rel="canonical" href="https://tom.klack.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Tom Ktorza","jobTitle":"Startup Operating Partner","url":"https://tom.klack.io/","image":"https://tom.klack.io/og.png","email":"mailto:tom@klack.io","address":{"@type":"PostalAddress","addressLocality":"New York","addressRegion":"NY","addressCountry":"US"},"worksFor":{"@type":"Organization","name":"Klack"},"alumniOf":{"@type":"EducationalOrganization","name":"42 Paris"},"sameAs":["https://www.linkedin.com/in/tom-ktorza-8a8b91113/"]}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a single column read like a mission file. Hero thesis, three situations, mission briefs (situation / intervention / outcome), how a mission works, background, contact. */
+/* Layout: a single column read like a mission file. Hook, four situations, scars, seven cases (situation / what I did / outcome), how I work, for investors, quotes, background, FAQ, contact. */
 :root{
   --bg:#F3F5F8;
   --surface:#FFFFFF;
@@ -121,7 +135,7 @@ nav.top a:hover{color:var(--ink)}
 .bg{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:32px}
 .bg ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
 .bg li{display:flex;gap:12px;font-size:15px}
-.bg li .y{font-family:var(--f-mono);font-size:13px;color:var(--muted);min-width:64px;font-variant-numeric:tabular-nums;padding-top:2px}
+.bg li .y{font-family:var(--f-mono);font-size:13px;color:var(--muted);min-width:80px;white-space:nowrap;font-variant-numeric:tabular-nums;padding-top:2px}
 .sectors{display:flex;flex-wrap:wrap;gap:8px}
 .sectors span{font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
 
@@ -158,17 +172,26 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
 .seen b{font-family:var(--f-display);font-size:26px;color:var(--signal);font-variant-numeric:tabular-nums;line-height:1}
 .seen span{font-size:17px}
 .seen-end{font-family:var(--f-display);font-size:20px;font-weight:700}
+
+.situations.four{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 32px}
+.situations.four h3{font-size:21px}
+.inv{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:14px}
+.faq{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding-block:16px}
+.faq summary{cursor:pointer;list-style-position:inside;font-family:var(--f-display);font-weight:700;font-size:18px;}
+.faq details p{margin-top:10px;color:var(--muted)}
+@media (max-width:760px){.situations.four{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
-
 
 <div class="wrap">
   <header class="top">
     <div class="brand">Tom Ktorza <span>· Klack</span></div>
     <nav class="top" aria-label="Sections">
-      <a href="#cases">Track record</a>
+      <a href="#cases">Cases</a>
       <a href="#how">How I work</a>
+      <a href="#investors">For investors</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -176,45 +199,36 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
   <div class="hero">
     <div class="hero-grid">
       <div class="hero-text">
-        <div class="label">Founder · Fractional Chief of Staff · New York</div>
-        <h1>I rescue companies. <em>Usually one week before it's too late.</em></h1>
-        <p class="lede">I'm the right hand startup CEOs call when things get chaotic. I bridge the CEO and the tech team, realign the vision, and turn it into a product that sells. Calm in the chaos.</p>
+        <div class="label">Startup Operating Partner · New York</div>
+        <h1>Something's stuck and nobody knows why. <em>I find out, and I fix it.</em></h1>
+        <p class="lede">Ten years building my own companies, and stepping into 30+ others at the critical moment. I don't just advise, I do the work.</p>
         <div class="cta">
-          <a class="btn primary" href="https://calendar.app.google/foh4vzQRrdMpk8wx8" target="_blank" rel="noopener">Book a 30 min call</a>
-          <a class="btn ghost" href="https://www.linkedin.com/in/tom-ktorza-8a8b91113/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn primary" href="https://calendar.app.google/foh4vzQRrdMpk8wx8" target="_blank" rel="noopener">Tell me what's stuck</a>
+          <a class="btn ghost" href="mailto:tom@klack.io">tom@klack.io</a>
         </div>
       </div>
       <div class="photo-col">
-        <!-- PHOTO: replace the .mono span with <img src="data:image/jpeg;base64,..." alt="Tom Ktorza"> -->
         <div class="portrait" aria-label="Tom Ktorza"><img src="data:image/jpeg;base64,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" alt="Tom Ktorza"></div>
-        <div class="portrait-cap">Tom Ktorza, 29</div>
+        <div class="portrait-cap">Tom Ktorza · Founder, Klack</div>
       </div>
     </div>
     <div class="facts" role="list">
-      <div role="listitem"><b>10 years</b><span>building and operating startups</span></div>
-      <div role="listitem"><b>20+</b><span>companies seen from the inside</span></div>
-      <div role="listitem"><b>CEO ⇄ CTO</b><span>I speak both languages and bridge them</span></div>
+      <div role="listitem"><b>10 years</b><span>building my own companies</span></div>
+      <div role="listitem"><b>30+</b><span>companies, stepped in at the critical moment</span></div>
+      <div role="listitem"><b>15+</b><span>broken products rescued</span></div>
       <div role="listitem"><b>NYC</b><span>Based in New York, from Paris</span></div>
     </div>
   </div>
 
   <section aria-labelledby="when">
-    <div class="label">When CEOs call me</div>
-    <h2 id="when">Three situations I fix</h2>
-    <p>From pre-seed startups to Series A, and established groups. Different sizes, same problem: the vision and the execution no longer match.</p>
-    <div class="situations">
-      <div class="sit">
-        <h3>The product is good, but it doesn't sell</h3>
-        <p>Strong tech, real users, little revenue. I package the offer, set the price, define who to sell to, and run the first go-to-market.</p>
-      </div>
-      <div class="sit">
-        <h3>The vision and the tech team drifted apart</h3>
-        <p>The CEO sees one thing, the team builds another. I get them back on the same plan and the product shipping again.</p>
-      </div>
-      <div class="sit">
-        <h3>The CEO is drowning</h3>
-        <p>Too many fires, nobody to run the machine. I take the operational load off the CEO, set the priorities and get the team executing.</p>
-      </div>
+    <div class="label">When founders call me</div>
+    <h2 id="when">Sound familiar?</h2>
+    <div class="situations four">
+      <div class="sit"><h3>Your launch has been "two weeks away" for six months.</h3></div>
+      <div class="sit"><h3>Your customers sign up, then leave.</h3></div>
+      <div class="sit"><h3>Sales blames tech. Tech blames sales.</h3></div>
+      <div class="sit"><h3>Your tech is incredible. Nobody's buying it yet.</h3></div>
+      <div class="sit"><h3>You've pivoted once, and you're thinking about doing it again.</h3></div>
     </div>
   </section>
 
@@ -233,58 +247,94 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
   </section>
 
   <section id="cases" aria-labelledby="cases-h">
-    <div class="label">Track record</div>
-    <h2 id="cases-h">A few missions</h2>
+    <div class="label">Cases · Klack, since 2019</div>
+    <h2 id="cases-h">What it looks like in practice</h2>
     <div class="briefs">
       <article class="brief">
-        <div class="head"><span class="tag">FUNDRAISE · AI STARTUP</span><h3>A fundraise saved one week before closing</h3></div>
+        <div class="head"><span class="tag">FUNDRAISE · AI STARTUP</span><h3>A fundraise saved one week before signing</h3></div>
         <dl>
-          <dt>Situation</dt><dd>A startup was one week away from closing its fundraise. The product was broken, and nobody was in charge of the team.</dd>
-          <dt>What I did</dt><dd>I came in with the right engineer, and we fixed the product in two days.</dd>
-          <dt>Outcome</dt><dd>They closed the round the next week.</dd>
+          <dt>Situation</dt><dd>A startup was one week away from signing its round. The product was broken, and nobody was really running the team.</dd>
+          <dt>What I did</dt><dd>I took over and ran the fix.</dd>
+          <dt>Outcome</dt><dd>Product fixed in days. They closed their round on schedule.</dd>
         </dl>
       </article>
       <article class="brief">
-        <div class="head"><span class="tag">PRODUCT · B2B SOFTWARE</span><h3>A platform built from zero</h3></div>
+        <div class="head"><span class="tag">PRICING · CONSULTING</span><h3>A consulting firm's method turned into an algorithm</h3></div>
         <dl>
-          <dt>Situation</dt><dd>A B2B company had a clear need and no product or tech team.</dd>
-          <dt>What I did</dt><dd>Set the product vision and the strategy before anything existed. Then specs, hiring and leading a 3-person tech team, all the way to production.</dd>
-          <dt>Outcome</dt><dd>Platform live with users, in beta.</dd>
+          <dt>Situation</dt><dd>A large consulting firm priced products by hand: consumer panels, forms, then consultants running a dozen analysis models, case by case.</dd>
+          <dt>What I did</dt><dd>We found the patterns shared by all their models and built one algorithm that ran them all, fed by a mobile app that captured far more data than their forms. I led it as CTO then CEO.</dd>
+          <dt>Outcome</dt><dd>The right price, instantly, by segment. It beat the firm's own consultants and became Klack's pricing product.</dd>
         </dl>
       </article>
       <article class="brief">
-        <div class="head"><span class="tag">OPERATIONS · ENERGY RENOVATION GROUP</span><h3>A vision realigned, a department built</h3></div>
+        <div class="head"><span class="tag">PRODUCT · PACKAGING COMPANY</span><h3>A CRM stuck for two years, delivered in one sprint</h3></div>
         <dl>
-          <dt>Situation</dt><dd>A renovation group was growing fast, but its leadership and its teams were no longer pulling in the same direction, with no tech, marketing or sales structure.</dd>
-          <dt>What I did</dt><dd>Realigned the vision with the leadership, then created the technology, marketing and sales department: lead acquisition strategy and a lead app connected to their CRM.</dd>
-          <dt>Outcome</dt><dd>A working department and a lead engine, set up in about six months.</dd>
+          <dt>Situation</dt><dd>An internal CRM had been "almost done" for two years. The client and its agency had stopped working together.</dd>
+          <dt>What I did</dt><dd>I froze the scope, got both sides back at the same table, and ran the delivery.</dd>
+          <dt>Outcome</dt><dd>Delivered in one sprint. Then I ran it and renegotiated the hosting.</dd>
         </dl>
       </article>
       <article class="brief">
-        <div class="head"><span class="tag">CO-FOUNDER · STYLEEP</span><h3>A traditional trade taken online</h3></div>
+        <div class="head"><span class="tag">TECH · SAAS STARTUP</span><h3>A SaaS architecture rebuilt in 10 days</h3></div>
         <dl>
-          <dt>Situation</dt><dd>Hair salons struggled to find staff; independent hairdressers struggled to find work.</dd>
-          <dt>What I did</dt><dd>Co-founded Styleep as CEO and built the platform connecting them.</dd>
-          <dt>Outcome</dt><dd>About 50 salons in a few months. Then it crashed, and it taught me more than anything else.</dd>
+          <dt>Situation</dt><dd>The product had been built on a spec that no longer matched what the founders needed. The architecture couldn't hold.</dd>
+          <dt>What I did</dt><dd>I rewrote the spec with the founders, brought in a new team, and rebuilt the architecture in 10 days.</dd>
+          <dt>Outcome</dt><dd>Platform in production, then a beta live with users.</dd>
+        </dl>
+      </article>
+      <article class="brief">
+        <div class="head"><span class="tag">OPERATIONS · ENERGY RENOVATION GROUP</span><h3>An energy renovation group growing fast with nothing behind it</h3></div>
+        <dl>
+          <dt>Situation</dt><dd>Leadership and teams were no longer pulling in the same direction, with no tech, marketing or sales structure.</dd>
+          <dt>What I did</dt><dd>I realigned leadership and teams, then built the tech, marketing and sales department from scratch: lead acquisition strategy and a lead app connected to their CRM.</dd>
+          <dt>Outcome</dt><dd>A working department and a lead engine, in about six months.</dd>
+        </dl>
+      </article>
+      <article class="brief">
+        <div class="head"><span class="tag">GROWTH · FUNDED SAAS</span><h3>A funded SaaS bleeding users</h3></div>
+        <dl>
+          <dt>Situation</dt><dd>Customers signed up, then left. The tech team was gone, and nobody knew why.</dd>
+          <dt>What I did</dt><dd>I audited sales, product, tech and data, listened to the sales calls and interviewed users. The product broke its promise at the exact moment customers should have seen the value, and the real asset wasn't the tool, it was the data behind it.</dd>
+          <dt>Outcome</dt><dd>In one week: the cause, and a recovery plan covering product, offer and go-to-market.</dd>
+        </dl>
+      </article>
+      <article class="brief">
+        <div class="head"><span class="tag">E-COMMERCE · FOOD BRAND</span><h3>A broken e-commerce site back online</h3></div>
+        <dl>
+          <dt>Situation</dt><dd>The site was down in a tense moment, on a setup far heavier than the business needed.</dd>
+          <dt>What I did</dt><dd>I took it over, brought it back online, moved it to the right-size infrastructure, and ran it for months.</dd>
+          <dt>Outcome</dt><dd>Back online, with hosting costs cut by 3 to 4x.</dd>
+        </dl>
+      </article>
+      <article class="brief">
+        <div class="head"><span class="tag">PIVOT · MY OWN COMPANY</span><h3>A salon project turned into a staffing platform</h3></div>
+        <dl>
+          <dt>Situation</dt><dd>We started out building a hair salon business. The real problem in the market was elsewhere: salons couldn't find hairdressers.</dd>
+          <dt>What I did</dt><dd>I pivoted the company into a staffing platform for salons, starting with a spreadsheet and a phone.</dd>
+          <dt>Outcome</dt><dd>250+ salons and 400+ hairdressers signed up. Backed by a French government innovation grant.</dd>
         </dl>
       </article>
     </div>
   </section>
 
-  <section aria-labelledby="more-h">
-    <div class="label">More missions · Klack, since 2019</div>
-    <h2 id="more-h">From startups to large companies</h2>
-    <ul class="missions">
-      <li><span class="sector">Real estate</span><span>Built a property management software from scratch.</span></li>
-      <li><span class="sector">Energy renovation</span><span>Designed and built the business software of a renovation company.</span></li>
-      <li><span class="sector">Consulting</span><span>Turned a consulting firm's analysis models into an algorithm that beat its team of consultants.</span></li>
-      <li><span class="sector">Packaging</span><span>Took over a failing product project and got it working.</span></li>
-      <li><span class="sector">Industry</span><span>Digital transformation and internal management processes for a manufacturer.</span></li>
-      <li><span class="sector">Food brand</span><span>Rescued a broken e-commerce site in a tense situation, then ran it for months.</span></li>
-      <li><span class="sector">Product R&amp;D</span><span>Hired and led the tech team, from the product vision to advanced R&amp;D.</span></li>
-      <li><span class="sector">Media</span><span>Technical consultant in a senior team at Canal+.</span></li>
-      <li><span class="sector">Non-profit</span><span>8-year partnership on project management, websites, intranet and business tools for a national organization.</span></li>
-    </ul>
+  <section id="how" aria-labelledby="how-h">
+    <div class="label">How I work</div>
+    <h2 id="how-h">From stuck to moving</h2>
+    <div class="steps">
+      <div class="step"><span class="n">Step 1 · one week</span><h3>Diagnosis</h3><p>I find what's actually stuck: product, team, sales or the founders. You get a written diagnosis and a 30-day plan.</p></div>
+      <div class="step"><span class="n">Step 2 · 4 to 8 weeks</span><h3>Unblock</h3><p>A few days a week inside the company. I do the work with your team until it moves.</p></div>
+      <div class="step"><span class="n">Step 3 · if it makes sense</span><h3>Advising</h3><p>I stay on as an advisor, close to the founder, there when the next thing gets stuck.</p></div>
+    </div>
+  </section>
+
+  <section id="investors" aria-labelledby="inv-h">
+    <div class="inv">
+      <div class="label">For investors</div>
+      <h2 id="inv-h">One of your portfolio companies is stuck?</h2>
+      <p>You see the numbers slip. You don't see why, and neither does the founder. I go in, find the cause, and fix it with the team. I'm independent, with no fund behind me: my only goal is getting the company moving again.</p>
+      <p>A stuck seed-stage company puts about $2M at risk. Finding out why costs a fraction of that.</p>
+      <div class="cta"><a class="btn primary" href="https://calendar.app.google/foh4vzQRrdMpk8wx8" target="_blank" rel="noopener">Talk about a company</a></div>
+    </div>
   </section>
 
   <section aria-labelledby="quotes-h">
@@ -306,26 +356,16 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
     </div>
   </section>
 
-  <section id="how" aria-labelledby="how-h">
-    <div class="label">How I work</div>
-    <h2 id="how-h">A mission, step by step</h2>
-    <div class="steps">
-      <div class="step"><span class="n">Step 1 · 30 min call</span><h3>Diagnosis</h3><p>You tell me where it's stuck. I tell you what I see, and whether I'm the right person.</p></div>
-      <div class="step"><span class="n">Step 2 · weeks to months</span><h3>Embedded</h3><p>A few days a week next to the CEO. Clear priorities, an aligned team, a product that ships and sells.</p></div>
-      <div class="step"><span class="n">Step 3 · if it clicks</span><h3>Longer term</h3><p>Some missions become more. I'm open to joining a team full time, as Chief of Staff or co-founder.</p></div>
-    </div>
-  </section>
-
   <section aria-labelledby="bg-h">
     <div class="label">Background</div>
     <h2 id="bg-h">Where I come from</h2>
     <div class="bg">
       <ul>
-        <li><span class="y">At 19</span><span>Started my first company, a consulting business.</span></li>
-        <li><span class="y">42</span><span>I never wrote a line of code before 18. Then trained at 42, the selective coding school in Paris.</span></li>
-        <li><span class="y">At 22</span><span>Shipped an AI image recognition product, demoed at CES Las Vegas.</span></li>
-        <li><span class="y">Klack</span><span>My company: missions inside 20+ companies, from early-stage startups to industrial groups.</span></li>
-        <li><span class="y">Station F</span><span>Alumnus, French Tech grant recipient.</span></li>
+        <li><span class="y">At 19</span><span>Started my first company, a consulting business. It became Klack, which I still run today.</span></li>
+        <li><span class="y">42</span><span>Never wrote a line of code before 18. Then trained at 42 Paris, and became the first to crack a cybersecurity project no student had solved in a year.</span></li>
+        <li><span class="y">Canal+</span><span>4K set-top box and Samsung and LG TV apps, inside a senior team.</span></li>
+        <li><span class="y">At 22</span><span>An AI product recognition app, from specs to a live demo at CES Las Vegas.</span></li>
+        <li><span class="y">Station F</span><span>Selected by 42's incubator at Station F. Backed by 3 French government innovation grants and the Wilco accelerator.</span></li>
         <li><span class="y">Now</span><span>Based in New York.</span></li>
       </ul>
       <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
@@ -335,9 +375,20 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
     </div>
   </section>
 
+  <section aria-labelledby="faq-h">
+    <div class="label">FAQ</div>
+    <h2 id="faq-h">Questions founders ask me</h2>
+    <div class="faq">
+      <details><summary>Is it only tech?</summary><p>No. Sometimes it's the product. Often it's the team, the offer, the pricing or the founders. I go where the problem is.</p></details>
+      <details><summary>Is this confidential?</summary><p>Yes. Everything you share stays confidential. If you want a mutual NDA, I'll send one, already signed.</p></details>
+      <details><summary>Why don't you start a fund?</summary><p>Because I love operations. A fund and I complement each other: you back the company, I get it moving.</p></details>
+      <details><summary>Why don't you launch another startup?</summary><p>I have, several times, and I probably will again. Right now I'd rather get other startups moving. It's just as exciting.</p></details>
+    </div>
+  </section>
+
   <div class="contact" id="contact">
-    <h2>Stuck somewhere? Let's talk.</h2>
-    <p>Founders who need a right hand, investors with a portfolio CEO under water: book 30 minutes or write to me.</p>
+    <h2>Something's stuck? Tell me.</h2>
+    <p>Founders and investors: book 30 minutes or write to me. Everything you share stays confidential.</p>
     <div class="row">
       <a class="btn primary" href="https://calendar.app.google/foh4vzQRrdMpk8wx8" target="_blank" rel="noopener">Book a call</a>
       <span class="mail">tom@klack.io</span>
@@ -346,7 +397,7 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
 
   <footer>
     <span>Tom Ktorza · Klack · New York / Paris</span>
-    <a href="https://www.linkedin.com/in/tom-ktorza-8a8b91113/" target="_blank" rel="noopener">linkedin.com/in/tom-ktorza-8a8b91113</a>
+    <a href="https://www.linkedin.com/in/tom-ktorza-8a8b91113/" target="_blank" rel="noopener">LinkedIn</a>
   </footer>
 </div>
 

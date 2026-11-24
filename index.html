@@ -31,7 +31,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Tom Ktorza","jobTitle":"Startup Operating Partner","url":"https://tom.klack.io/","image":"https://tom.klack.io/og.png","email":"mailto:tom@klack.io","address":{"@type":"PostalAddress","addressLocality":"New York","addressRegion":"NY","addressCountry":"US"},"worksFor":{"@type":"Organization","name":"Klack"},"alumniOf":{"@type":"EducationalOrganization","name":"42 Paris"},"sameAs":["https://www.linkedin.com/in/tom-ktorza-8a8b91113/"]}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a single column read like a mission file. Hook, four situations, scars, seven cases (situation / what I did / outcome), how I work, for investors, quotes, background, FAQ, contact. */
+/* Layout v4: the site is the long version of the one-page resume. Hook and proof strip, symptoms linked to cases, scars, 13 expandable cases in the resume format (sector, result, role, time, then situation / what I did / result / for you), method in 4 steps and 3 formats, investors, quotes, background, FAQ, contact. */
 :root{
   --bg:#F3F5F8;
   --surface:#FFFFFF;
@@ -181,6 +181,39 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
 .faq summary{cursor:pointer;list-style-position:inside;font-family:var(--f-display);font-weight:700;font-size:18px;}
 .faq details p{margin-top:10px;color:var(--muted)}
 @media (max-width:760px){.situations.four{grid-template-columns:minmax(0,1fr)}}
+
+/* v4: cases as expandable cards, CV format */
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.filters button{font:inherit;font-size:13px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cases{display:flex;flex-direction:column;gap:12px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:12px;scroll-margin-top:24px}
+.case summary{list-style:none;cursor:pointer;padding:18px 22px;display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:6px 20px;align-items:baseline}
+.case summary::-webkit-details-marker{display:none}
+.case .sector{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.case .res{font-family:var(--f-display);font-weight:700;font-size:19px;line-height:1.3}
+.case .meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap;text-align:right}
+.case .meta b{display:block;color:var(--ink);font-weight:500}
+.case summary .more{grid-column:2;font-size:13px;color:var(--accent)}
+.case[open] summary .more{display:none}
+.case dl{margin:0;padding:4px 22px 22px 192px;display:grid;grid-template-columns:150px minmax(0,1fr);gap:10px 16px}
+.case dt{font-family:var(--f-mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding-top:3px}
+.case dd{margin:0;font-size:15px;min-width:0}
+.case dd.you{font-weight:600}
+.era{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+.sit a{font-size:14px;text-decoration:none}
+.steps.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.formats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.format{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.format .n{font-family:var(--f-mono);font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+.format p{color:var(--muted);font-size:15px}
+@media (max-width:760px){
+  .case summary{grid-template-columns:minmax(0,1fr)}
+  .case .meta{text-align:left}
+  .case summary .more{grid-column:1}
+  .case dl{padding:4px 22px 22px;grid-template-columns:minmax(0,1fr)}
+  .steps.four,.formats{grid-template-columns:minmax(0,1fr)}
+}
 </style>
 </head>
 <body>
@@ -192,6 +225,7 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
       <a href="#cases">Cases</a>
       <a href="#how">How I work</a>
       <a href="#investors">For investors</a>
+      <a href="#background">Background</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -213,10 +247,10 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
       </div>
     </div>
     <div class="facts" role="list">
-      <div role="listitem"><b>10 years</b><span>building my own companies</span></div>
+      <div role="listitem"><b>€2M</b><span>round closed on schedule, after the product broke days before the demo</span></div>
+      <div role="listitem"><b>2 yrs → 1 sprint</b><span>a stuck CRM, finally delivered</span></div>
+      <div role="listitem"><b>250+</b><span>salons signed up on my own staffing platform</span></div>
       <div role="listitem"><b>30+</b><span>companies, stepped in at the critical moment</span></div>
-      <div role="listitem"><b>15+</b><span>broken products rescued</span></div>
-      <div role="listitem"><b>NYC</b><span>Based in New York, from Paris</span></div>
     </div>
   </div>
 
@@ -224,11 +258,11 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
     <div class="label">When founders call me</div>
     <h2 id="when">Sound familiar?</h2>
     <div class="situations four">
-      <div class="sit"><h3>Your launch has been "two weeks away" for six months.</h3></div>
-      <div class="sit"><h3>Your customers sign up, then leave.</h3></div>
-      <div class="sit"><h3>Sales blames tech. Tech blames sales.</h3></div>
-      <div class="sit"><h3>Your tech is incredible. Nobody's buying it yet.</h3></div>
-      <div class="sit"><h3>You've pivoted once, and you're thinking about doing it again.</h3></div>
+      <div class="sit"><h3>Your launch has been "two weeks away" for six months.</h3><a href="#case-crm">See a case like this →</a></div>
+      <div class="sit"><h3>Your customers sign up, then leave.</h3><a href="#case-churn">See a case like this →</a></div>
+      <div class="sit"><h3>Sales blames tech. Tech blames sales.</h3><a href="#case-energy">See a case like this →</a></div>
+      <div class="sit"><h3>Your tech is incredible. Nobody's buying it yet.</h3><a href="#case-churn">See a case like this →</a></div>
+      <div class="sit"><h3>You've pivoted once, and you're thinking about doing it again.</h3><a href="#case-styleep">See a case like this →</a></div>
     </div>
   </section>
 
@@ -247,83 +281,155 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
   </section>
 
   <section id="cases" aria-labelledby="cases-h">
-    <div class="label">Cases · Klack, since 2019</div>
+    <div class="label">Cases · 2016 to today</div>
     <h2 id="cases-h">What it looks like in practice</h2>
-    <div class="briefs">
-      <article class="brief">
-        <div class="head"><span class="tag">FUNDRAISE · AI STARTUP</span><h3>A fundraise saved one week before signing</h3></div>
+    <p>The result first. Open a case to see the situation, what I did, and what it means for you.</p>
+    <div class="filters" role="group" aria-label="Filter cases">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="product" aria-pressed="false">Product broke or late</button>
+      <button type="button" data-f="growth" aria-pressed="false">Growth stalled</button>
+      <button type="button" data-f="team" aria-pressed="false">Team not aligned</button>
+      <button type="button" data-f="fundraise" aria-pressed="false">Fundraise at risk</button>
+    </div>
+    <div class="cases">
+      <div class="era">Klack · Since 2019</div>
+      <details class="case" id="case-fundraise" data-tags="fundraise product">
+        <summary><span class="sector">Media tech · AI startup</span><span class="res">€2M round closed on schedule</span><span class="meta"><b>Interim lead</b>1 week</span><span class="more">See how →</span></summary>
         <dl>
-          <dt>Situation</dt><dd>A startup was one week away from signing its round. The product was broken, and nobody was really running the team.</dd>
-          <dt>What I did</dt><dd>I took over and ran the fix.</dd>
-          <dt>Outcome</dt><dd>Product fixed in days. They closed their round on schedule.</dd>
+          <dt>Situation</dt><dd>Days before the investor demo, the product broke. Nobody was really running the team.</dd>
+          <dt>What I did</dt><dd>I brought in a senior engineer, took over the project and ran the fix myself. The product was fixed in 3 days.</dd>
+          <dt>Result</dt><dd>The demo went through, and the €2M round closed on schedule.</dd>
+          <dt>For you</dt><dd class="you">When everything breaks before a key meeting, the fix is rarely the hard part. What's missing is one person who takes charge and decides.</dd>
         </dl>
-      </article>
-      <article class="brief">
-        <div class="head"><span class="tag">PRICING · CONSULTING</span><h3>A consulting firm's method turned into an algorithm</h3></div>
+      </details>
+      <details class="case" id="case-energy" data-tags="team growth">
+        <summary><span class="sector">Energy · Renovation group</span><span class="res">Tech and marketing set up, from CRM to lead gen</span><span class="meta"><b>Operating partner</b>3 months</span><span class="more">See how →</span></summary>
         <dl>
-          <dt>Situation</dt><dd>A large consulting firm priced products by hand: consumer panels, forms, then consultants running a dozen analysis models, case by case.</dd>
-          <dt>What I did</dt><dd>We found the patterns shared by all their models and built one algorithm that ran them all, fed by a mobile app that captured far more data than their forms. I led it as CTO then CEO.</dd>
-          <dt>Outcome</dt><dd>The right price, instantly, by segment. It beat the firm's own consultants and became Klack's pricing product.</dd>
+          <dt>Situation</dt><dd>A fast-growing group needing structure. Leadership and teams were no longer pulling in the same direction, and there was no tech or marketing function.</dd>
+          <dt>What I did</dt><dd>I realigned leadership first. Then I set up tech and marketing: a lead acquisition strategy, a lead-gen web app wired to the CRM, and the team's tools.</dd>
+          <dt>Result</dt><dd>The lead platform went live on schedule. I was then kept on to run tech and marketing for several months.</dd>
+          <dt>For you</dt><dd class="you">Fast growth hides missing structure until something breaks. Align the top first, then build.</dd>
         </dl>
-      </article>
-      <article class="brief">
-        <div class="head"><span class="tag">PRODUCT · PACKAGING COMPANY</span><h3>A CRM stuck for two years, delivered in one sprint</h3></div>
+      </details>
+      <details class="case" id="case-crm" data-tags="product team">
+        <summary><span class="sector">Industrial · Packaging company</span><span class="res">Delivered in one sprint, after two years stuck</span><span class="meta"><b>Mediator & lead</b>2 weeks</span><span class="more">See how →</span></summary>
         <dl>
           <dt>Situation</dt><dd>An internal CRM had been "almost done" for two years. The client and its agency had stopped working together.</dd>
-          <dt>What I did</dt><dd>I froze the scope, got both sides back at the same table, and ran the delivery.</dd>
-          <dt>Outcome</dt><dd>Delivered in one sprint. Then I ran it and renegotiated the hosting.</dd>
+          <dt>What I did</dt><dd>I mediated between both sides, froze new features, scoped one sprint and ran the delivery.</dd>
+          <dt>Result</dt><dd>Delivered in one sprint. Then I ran it and renegotiated the hosting.</dd>
+          <dt>For you</dt><dd class="you">A project that drags for years is rarely a tech problem. Usually the scope never stops moving. Freeze it, and it ships.</dd>
         </dl>
-      </article>
-      <article class="brief">
-        <div class="head"><span class="tag">TECH · SAAS STARTUP</span><h3>A SaaS architecture rebuilt in 10 days</h3></div>
+      </details>
+      <details class="case" id="case-churn" data-tags="growth">
+        <summary><span class="sector">Construction · Funded SaaS</span><span class="res">Turnaround plan, no new money needed</span><span class="meta"><b>Turnaround advisor</b>1 week</span><span class="more">See how →</span></summary>
         <dl>
-          <dt>Situation</dt><dd>The product had been built on a spec that no longer matched what the founders needed. The architecture couldn't hold.</dd>
-          <dt>What I did</dt><dd>I rewrote the spec with the founders, brought in two senior engineers from my network, and rebuilt the architecture in a 10-day sprint, without slowing development.</dd>
-          <dt>Outcome</dt><dd>Platform in production, then a beta live with users.</dd>
+          <dt>Situation</dt><dd>Customers signed up, then left. Everyone had a different theory about why.</dd>
+          <dt>What I did</dt><dd>I interviewed staff, engineers, ex-partners and customers, listened to the sales calls and audited product, tech and data. The product broke its promise at the exact moment customers should have seen the value, and the real asset wasn't the tool, it was the data behind it.</dd>
+          <dt>Result</dt><dd>In one week: the cause, and a turnaround plan covering product, offer and go-to-market, without raising new money.</dd>
+          <dt>For you</dt><dd class="you">When everyone has a theory, nobody has the answer. One week listening to every side costs less than another quarter of guessing.</dd>
         </dl>
-      </article>
-      <article class="brief">
-        <div class="head"><span class="tag">OPERATIONS · ENERGY RENOVATION GROUP</span><h3>An energy renovation group growing fast with nothing behind it</h3></div>
+      </details>
+      <details class="case" id="case-rebuild" data-tags="product">
+        <summary><span class="sector">Accounting · SaaS startup</span><span class="res">Beta live with first users, architecture rebuilt</span><span class="meta"><b>Project lead</b>10 days</span><span class="more">See how →</span></summary>
         <dl>
-          <dt>Situation</dt><dd>Leadership and teams were no longer pulling in the same direction, with no tech, marketing or sales structure.</dd>
-          <dt>What I did</dt><dd>I realigned leadership and teams, then built the tech, marketing and sales department from scratch: lead acquisition strategy and a lead app connected to their CRM.</dd>
-          <dt>Outcome</dt><dd>A working department and a lead engine, in about six months.</dd>
+          <dt>Situation</dt><dd>The product had been built on a spec that no longer fit what the founders needed. The architecture couldn't hold.</dd>
+          <dt>What I did</dt><dd>I rewrote the spec with the founders, brought in two senior engineers and rebuilt the architecture in a 10-day sprint, without slowing development.</dd>
+          <dt>Result</dt><dd>Platform in production, then a beta live with first users.</dd>
+          <dt>For you</dt><dd class="you">When the product no longer matches the business, patching makes it worse. Re-spec first, then rebuild fast.</dd>
         </dl>
-      </article>
-      <article class="brief">
-        <div class="head"><span class="tag">GROWTH · FUNDED SAAS</span><h3>A funded SaaS bleeding users</h3></div>
+      </details>
+      <details class="case" id="case-pricing" data-tags="product">
+        <summary><span class="sector">Consulting · Pricing</span><span class="res">One algorithm beat the firm's own consultants</span><span class="meta"><b>CTO, then CEO</b>1 year</span><span class="more">See how →</span></summary>
         <dl>
-          <dt>Situation</dt><dd>Customers signed up, then left. The tech team was gone, and nobody knew why.</dd>
-          <dt>What I did</dt><dd>I audited sales, product, tech and data, listened to the sales calls and interviewed users. The product broke its promise at the exact moment customers should have seen the value, and the real asset wasn't the tool, it was the data behind it.</dd>
-          <dt>Outcome</dt><dd>In one week: the cause, and a recovery plan covering product, offer and go-to-market.</dd>
+          <dt>Situation</dt><dd>A consulting firm priced products by hand: consumer panels, forms, then consultants running a dozen analysis models, case by case.</dd>
+          <dt>What I did</dt><dd>I modeled the consultants' method: we found the patterns shared by all their models and built one algorithm that ran them all, fed by a mobile app that captured far more data than their forms. I led it as CTO, then CEO.</dd>
+          <dt>Result</dt><dd>The right price, instantly, by segment. It beat the firm's own consultants and became Klack's pricing product, backed by a French government grant and the Wilco accelerator.</dd>
+          <dt>For you</dt><dd class="you">If your team's know-how lives in people's heads, it can become a product.</dd>
         </dl>
-      </article>
-      <article class="brief">
-        <div class="head"><span class="tag">E-COMMERCE · FOOD BRAND</span><h3>A broken e-commerce site back online</h3></div>
-        <dl>
-          <dt>Situation</dt><dd>The site was down in a tense moment, on a setup far heavier than the business needed.</dd>
-          <dt>What I did</dt><dd>I took it over, brought it back online, moved it to the right-size infrastructure, and ran it for months.</dd>
-          <dt>Outcome</dt><dd>Back online, with hosting costs cut by 3 to 4x.</dd>
-        </dl>
-      </article>
-      <article class="brief">
-        <div class="head"><span class="tag">PIVOT · MY OWN COMPANY</span><h3>A salon project turned into a staffing platform</h3></div>
+      </details>
+      <div class="era">Styleep · 2021 to 2025</div>
+      <details class="case" id="case-styleep" data-tags="growth">
+        <summary><span class="sector">Beauty · Styleep, my company</span><span class="res">250+ salons and 400+ hairdressers signed up</span><span class="meta"><b>Co-founder & CEO</b>4 years</span><span class="more">See how →</span></summary>
         <dl>
           <dt>Situation</dt><dd>We started out building a hair salon business. The real problem in the market was elsewhere: salons couldn't find hairdressers.</dd>
-          <dt>What I did</dt><dd>I pivoted the company into a staffing platform for salons, starting with a spreadsheet and a phone.</dd>
-          <dt>Outcome</dt><dd>250+ salons and 400+ hairdressers signed up. Backed by a French government innovation grant.</dd>
+          <dt>What I did</dt><dd>I pivoted the company into a staffing platform. Spreadsheet and cold calls first, then I built the platform, ran marketing and hired sales.</dd>
+          <dt>Result</dt><dd>250+ salons and 400+ hairdressers signed up. Backed by a French government grant.</dd>
+          <dt>For you</dt><dd class="you">The best pivots come from listening to the market, and testing with a spreadsheet before building anything.</dd>
         </dl>
-      </article>
+      </details>
+      <div class="era">Independent consultant · 2016 to 2019</div>
+      <details class="case" id="case-ces" data-tags="product">
+        <summary><span class="sector">Retail · AI startup</span><span class="res">CES Las Vegas demo, called a success by the client</span><span class="meta"><b>Project lead</b>3 months</span><span class="more">See how →</span></summary>
+        <dl>
+          <dt>Situation</dt><dd>A startup needed an AI that recognizes products on supermarket shelves, working live, in time for CES Las Vegas.</dd>
+          <dt>What I did</dt><dd>I led it from specs to demo and built the image recognition on Microsoft Azure, in touch with Microsoft's team, plus the demo page.</dd>
+          <dt>Result</dt><dd>A live demo at CES. The client wrote back that their presentation had been a success thanks to the work.</dd>
+          <dt>For you</dt><dd class="you">A hard deadline is manageable when the scope is cut to what the demo has to prove.</dd>
+        </dl>
+      </details>
+      <details class="case" id="case-social" data-tags="product">
+        <summary><span class="sector">Social data · AI startup</span><span class="res">Demo-ready in under a week, then kept on 6 months</span><span class="meta"><b>Project lead</b>6 months</span><span class="more">See how →</span></summary>
+        <dl>
+          <dt>Situation</dt><dd>An AI startup mapping emotions on Twitter needed a visual web app for a client presentation, within days.</dd>
+          <dt>What I did</dt><dd>I built the emotion map web app and put it live on AWS, working through a holiday weekend. Then I built two more apps for them.</dd>
+          <dt>Result</dt><dd>Demo-ready in under a week, and kept on for six months.</dd>
+          <dt>For you</dt><dd class="you">Speed comes from building exactly what the meeting needs, then improving.</dd>
+        </dl>
+      </details>
+      <details class="case" id="case-tv" data-tags="product">
+        <summary><span class="sector">Media · Pay-TV group</span><span class="res">TV apps shipped for France's top pay-TV group</span><span class="meta"><b>Consultant</b>6 months</span><span class="more">See how →</span></summary>
+        <dl>
+          <dt>Situation</dt><dd>A large group building its new 4K set-top box and smart TV apps, with a senior team.</dd>
+          <dt>What I did</dt><dd>I joined as a consultant through my own company and worked on the set-top box and the Samsung and LG TV apps.</dd>
+          <dt>Result</dt><dd>The apps shipped.</dd>
+          <dt>For you</dt><dd class="you">I know how large groups work: processes, stakeholders, release cycles. It helps when a startup starts selling to them.</dd>
+        </dl>
+      </details>
+      <div class="era">More missions</div>
+      <details class="case" id="case-ecommerce" data-tags="product">
+        <summary><span class="sector">E-commerce · Food brand</span><span class="res">A broken e-commerce site back online</span><span class="meta"><b>Takeover lead</b>1 week</span><span class="more">See how →</span></summary>
+        <dl>
+          <dt>Situation</dt><dd>The site was down at a tense moment, on a setup far heavier than the business needed.</dd>
+          <dt>What I did</dt><dd>I took it over, brought it back online, moved it to the right-size infrastructure, and ran it for months.</dd>
+          <dt>Result</dt><dd>Back online, with hosting costs cut by 3 to 4x.</dd>
+          <dt>For you</dt><dd class="you">Over-built infrastructure is common in young companies. Right-sizing it cuts costs without touching the product.</dd>
+        </dl>
+      </details>
+      <details class="case" id="case-nonprofit" data-tags="team">
+        <summary><span class="sector">Nonprofit · National association</span><span class="res">Trusted partner since 2017</span><span class="meta"><b>Project lead</b>8+ years</span><span class="more">See how →</span></summary>
+        <dl>
+          <dt>Situation</dt><dd>A national nonprofit needed a secure website, an intranet and business tools, run by someone it could trust over time.</dd>
+          <dt>What I did</dt><dd>I built and still run their website, intranet and business tools, and step in on new projects about once a year.</dd>
+          <dt>Result</dt><dd>A client since 2017, still working together today.</dd>
+          <dt>For you</dt><dd class="you">The missions don't end when the crisis does. When it works, people keep calling.</dd>
+        </dl>
+      </details>
+      <details class="case" id="case-sneakers" data-tags="growth">
+        <summary><span class="sector">Consumer brand · Sneakers</span><span class="res">Demand tested before a single shoe was made</span><span class="meta"><b>Strategy lead</b>3 months</span><span class="more">See how →</span></summary>
+        <dl>
+          <dt>Situation</dt><dd>Founders wanted to launch a sneaker brand and were about to invest in production.</dd>
+          <dt>What I did</dt><dd>I ran a framing workshop, then a study on a consumer panel of 600 people, and presented the findings.</dd>
+          <dt>Result</dt><dd>A launch decision based on real demand data, before spending on production.</dd>
+          <dt>For you</dt><dd class="you">Testing demand first costs a fraction of building first. It's the cheapest insurance a founder can buy.</dd>
+        </dl>
+      </details>
     </div>
   </section>
 
   <section id="how" aria-labelledby="how-h">
     <div class="label">How I work</div>
-    <h2 id="how-h">From stuck to moving</h2>
-    <div class="steps">
-      <div class="step"><span class="n">Step 1 · one week</span><h3>Diagnosis</h3><p>I find what's actually stuck: product, team, sales or the founders. You get a written diagnosis and a 30-day plan.</p></div>
-      <div class="step"><span class="n">Step 2 · 4 to 8 weeks</span><h3>Unblock</h3><p>A few days a week inside the company. I do the work with your team until it moves.</p></div>
-      <div class="step"><span class="n">Step 3 · if it makes sense</span><h3>Advising</h3><p>I stay on as an advisor, close to the founder, there when the next thing gets stuck.</p></div>
+    <h2 id="how-h">Same method, every time</h2>
+    <div class="steps four">
+      <div class="step"><span class="n">01</span><h3>Listen to everyone</h3><p>Founders, staff, engineers, customers, ex-partners. Each one holds a piece of the answer.</p></div>
+      <div class="step"><span class="n">02</span><h3>Find the one real cause</h3><p>Not the loudest theory. The thing that, once fixed, unlocks the rest.</p></div>
+      <div class="step"><span class="n">03</span><h3>Cut scope, ship a sprint</h3><p>Freeze what doesn't matter, deliver what does, fast. Results in days or weeks, not quarters.</p></div>
+      <div class="step"><span class="n">04</span><h3>Make it run without me</h3><p>The right people, tools and habits in place, so it keeps moving after I leave.</p></div>
+    </div>
+    <div class="label">Ways to work together</div>
+    <div class="formats">
+      <div class="format"><span class="n">1 week</span><h3>Diagnosis</h3><p>I find what's actually stuck: product, team, sales or the founders. You get a written diagnosis and a 30-day plan.</p></div>
+      <div class="format"><span class="n">2 to 4 weeks</span><h3>Sprint</h3><p>Inside the company with your team, until the blocked thing ships.</p></div>
+      <div class="format"><span class="n">1 to 3 months</span><h3>Operating partner</h3><p>A few days a week, I run what's missing: tech, marketing, sales or operations, then hand it over.</p></div>
     </div>
   </section>
 
@@ -356,21 +462,21 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
     </div>
   </section>
 
-  <section aria-labelledby="bg-h">
+  <section id="background" aria-labelledby="bg-h">
     <div class="label">Background</div>
     <h2 id="bg-h">Where I come from</h2>
     <div class="bg">
       <ul>
-        <li><span class="y">At 19</span><span>Started my first company, a consulting business. It became Klack, which I still run today.</span></li>
-        <li><span class="y">42</span><span>Never wrote a line of code before 18. Then trained at 42 Paris, and became the first to crack a cybersecurity project no student had solved in a year.</span></li>
-        <li><span class="y">Canal+</span><span>4K set-top box and Samsung and LG TV apps, inside a senior team.</span></li>
-        <li><span class="y">At 22</span><span>An AI product recognition app, from specs to a live demo at CES Las Vegas.</span></li>
-        <li><span class="y">Station F</span><span>Selected by 42's incubator at Station F. Backed by 3 French government innovation grants and the Wilco accelerator.</span></li>
-        <li><span class="y">Now</span><span>Based in New York.</span></li>
+        <li><span class="y">2019 · now</span><span><b>Klack</b>, Founder &amp; CEO. Paris, then New York. Stepping into startups and groups at the critical moment.</span></li>
+        <li><span class="y">2021 · 2025</span><span><b>Styleep</b>, Co-founder &amp; CEO. Staffing platform for hair salons.</span></li>
+        <li><span class="y">2016 · 2019</span><span><b>Independent consultant</b>. A pay-TV group's TV apps, an AI demo at CES Las Vegas, AI startups.</span></li>
+        <li><span class="y">Also founded</span><span><b>Passoire.io</b>, climate fintech funding home energy retrofits, selected by 42's incubator at Station F. <b>Klarn</b>, non-dilutive funding advisory, first client signed 18 days after launch.</span></li>
+        <li><span class="y">2015 · 2019</span><span><b>42 Paris</b>, selective tech school. Joined with no coding background, first to crack a cybersecurity project no student had solved in a year.</span></li>
       </ul>
       <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
         <div class="label">Industries</div>
-        <div class="sectors"><span>AI</span><span>Health</span><span>Energy</span><span>Retail</span><span>Media</span><span>Finance</span><span>Insurance</span><span>B2B software</span></div>
+        <div class="sectors"><span>AI</span><span>Energy</span><span>Construction</span><span>Retail</span><span>Media</span><span>Finance</span><span>Beauty</span><span>B2B software</span></div>
+        <div class="cta" style="margin-top:8px"><a class="btn ghost" href="/resume/">One-page resume</a></div>
       </div>
     </div>
   </section>
@@ -400,6 +506,18 @@ footer{padding-block:0 40px;color:var(--muted);font-size:13px;display:flex;justi
     <a href="https://www.linkedin.com/in/tom-ktorza-8a8b91113/" target="_blank" rel="noopener">LinkedIn</a>
   </footer>
 </div>
-
+<script>
+(function(){
+  var btns=document.querySelectorAll('.filters button'),cards=document.querySelectorAll('.case'),eras=document.querySelectorAll('.era');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    var f=b.getAttribute('data-f');
+    btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    cards.forEach(function(c){c.hidden=!(f==='all'||c.getAttribute('data-tags').split(' ').indexOf(f)>-1)});
+    eras.forEach(function(e){e.hidden=(f!=='all')});
+  })});
+  function openHash(){var el=document.querySelector(location.hash);if(el&&el.tagName==='DETAILS'){el.open=true}}
+  window.addEventListener('hashchange',openHash);if(location.hash)openHash();
+})();
+</script>
 </body>
 </html>

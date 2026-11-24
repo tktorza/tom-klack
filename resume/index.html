@@ -30,167 +30,104 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a one-page résumé in the main site's identity. Full-width roles with dates right-aligned on the title line. Prints to one US Letter page. */
-:root{
-  --bg:#F3F5F8; --paper:#FFFFFF; --ink:#0F1A2B; --muted:#556275; --line:#D8DEE7; --accent:#1F4FD8; --signal:#C2410C;
-  --f-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
-  --f-body:"Inter","Helvetica Neue",Arial,sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){ --bg:#0B111C; --paper:#121A28; --ink:#E8EDF5; --muted:#9AA6B8; --line:#243044; --accent:#7C9BFF; --signal:#FB923C; color-scheme:dark; }
-}
-:root[data-theme="dark"]{ --bg:#0B111C; --paper:#121A28; --ink:#E8EDF5; --muted:#9AA6B8; --line:#243044; --accent:#7C9BFF; --signal:#FB923C; color-scheme:dark; }
+/* Layout: the one-page resume (v8.1) in the site's identity. Same order and wording as the PDF. Screen: cards on a light background; print: one US Letter page. */
+:root{--bg:#F3F5F8;--paper:#FFFFFF;--ink:#0F1A2B;--muted:#556275;--line:#D8DEE7;--accent:#1F4FD8;
+  --f-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--f-body:"Inter","Helvetica Neue",Arial,sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0B111C;--paper:#121A28;--ink:#E8EDF5;--muted:#9AA6B8;--line:#243044;--accent:#7C9BFF;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0B111C;--paper:#121A28;--ink:#E8EDF5;--muted:#9AA6B8;--line:#243044;--accent:#7C9BFF;color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:13.5px;line-height:1.5;margin:0;
-  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:24px}
-a{color:var(--accent);text-decoration:none}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;padding:24px max(16px,env(safe-area-inset-left,0px))}
+a{color:var(--accent)}
 a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.page{max-width:820px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:40px 44px;display:flex;flex-direction:column;gap:20px}
-h1,h2,h3{font-family:var(--f-display);margin:0}
+.bar{max-width:980px;margin:0 auto 14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px}
+.bar a{text-decoration:none}
+.btn{display:inline-flex;padding:9px 14px;border-radius:8px;border:1px solid var(--accent);font-weight:600;font-size:14px}
+.btn.primary{background:var(--accent);color:#fff}
+.page{max-width:980px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:40px 44px;display:flex;flex-direction:column;gap:22px}
+h1,h2{font-family:var(--f-display);margin:0}
 header.cv{display:flex;flex-direction:column;gap:6px;padding-bottom:16px;border-bottom:2px solid var(--ink)}
-header.cv h1{font-size:34px;line-height:1;letter-spacing:-.01em}
-.role{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.contact{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12.5px;color:var(--muted)}
-.summary{font-size:14px}
-.summary b{font-family:var(--f-display);font-size:16px;display:block;margin-bottom:2px}
-.summary .hook{font-family:var(--f-display);font-size:17px;font-weight:700;display:block;margin:0 0 6px}
-.situ{margin-top:10px}
-.situ ul{margin-top:4px}
-.cta{display:block;margin-top:8px;padding-left:10px;border-left:2px solid var(--accent);font-size:13px}
-.summary .seek{display:block;margin-top:8px;padding-left:10px;border-left:2px solid var(--accent);font-size:13px}
-.summary .seek b{display:inline;font-family:var(--f-body);font-size:inherit;font-weight:600;margin:0}
-section{display:flex;flex-direction:column;gap:10px}
-h2{font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:4px}
-.job{display:block}
-.job .head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
-.when{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);white-space:nowrap;flex:none}
-.job h3{font-size:15.5px}
-.job h3 span{font-family:var(--f-body);font-weight:400;color:var(--muted);font-size:13px}
-.job p.ctx{color:var(--muted);font-size:12.5px;margin:2px 0 4px}
-ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:3px}
-li{min-width:0}
-li b{font-weight:600}
-.cover dl{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 14px;margin:0;font-size:13.5px}
-.cover dt{font-weight:600}
-.cover dd{margin:0}
-@media print{.cover dl{grid-template-columns:92px minmax(0,1fr);font-size:11px;gap:2px 12px}}
-.small{font-size:12.5px}
-.duo{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:24px}
-@media (max-width:640px){.duo{grid-template-columns:minmax(0,1fr);gap:20px}}
-@media (max-width:640px){
+header.cv h1{font-size:36px;line-height:1}
+.title{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.contact a{text-decoration:none}
+.contact{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:14px;color:var(--muted)}
+.contact span{color:var(--line)}
+.hook b{font-family:var(--f-display);font-size:20px;display:block}
+.hook p{margin:4px 0 0;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:6px}
+.co{display:flex;justify-content:space-between;gap:12px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:6px}
+.co h2{font-size:19px}
+.co h2 span{font-family:var(--f-body);font-weight:400;font-size:14px;color:var(--muted)}
+.co .when{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.cols{display:grid;grid-template-columns:110px minmax(0,1fr) 140px 100px;gap:0 16px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cols span:first-child{grid-column:3}
+.row{display:grid;grid-template-columns:110px minmax(0,1fr) 140px 100px;gap:0 16px;padding-block:8px}
+.row p{margin:0}
+.sec{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500;padding-top:3px}
+.res{font-weight:700}
+.prob{color:var(--muted);font-size:14px}
+.how{font-size:14px}
+.note{color:var(--muted);font-size:14px;font-style:italic}
+.role{font-size:14px;padding-top:1px}
+.time{font-size:14px;color:var(--muted);padding-top:1px}
+.plain p{margin:0}
+.plain h2{font-size:19px;border-bottom:1px solid var(--line);padding-bottom:6px}
+@media (max-width:700px){
   .page{padding:24px 18px}
-  .job .head{flex-direction:column;gap:0}
+  .cols{display:none}
+  .row{display:flex;flex-wrap:wrap;gap:2px 6px}
+  .row .sec,.row .txt{flex-basis:100%}
+  .role,.time{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+  .role::after{content:" ·"}
+  .co{flex-direction:column;gap:0}
 }
-@page{size:Letter;margin:0.4in 0.5in}
-@media print{
-  :root{--bg:#fff;--paper:#fff;--ink:#0F1A2B;--muted:#556275;--line:#D8DEE7;--accent:#1F4FD8}
-  body{padding:0;font-size:11.2px;line-height:1.4}
-  .page{border:0;border-radius:0;padding:0;gap:15px;max-width:none}
-  header.cv{padding-bottom:9px;gap:4px}
-  header.cv h1{font-size:30px}
-  .summary{font-size:11.6px}.summary .hook{font-size:14.5px;margin-bottom:4px}.situ{margin-top:7px}.cta{font-size:11.2px;margin-top:6px}.summary b{font-size:14px}.summary .hook{font-family:var(--f-display);font-size:17px;font-weight:700;display:block;margin:0 0 6px}
-.situ{margin-top:10px}
-.situ ul{margin-top:4px}
-.cta{display:block;margin-top:8px;padding-left:10px;border-left:2px solid var(--accent);font-size:13px}
-.summary .seek{font-size:11.2px;margin-top:5px}.summary .seek b{font-size:inherit}
-  .job h3{font-size:13.5px}.job h3 span{font-size:11.5px}
-  .job p.ctx{font-size:10.8px;margin:1px 0 3px}
-  ul{gap:2px}
-  section{gap:9px}
-  .job + .job{margin-top:3px}
-  h2{padding-bottom:5px}
-  h2{font-size:10px}
-  .contact,.small{font-size:11px}
-  .when{font-size:10px}
-}
-.summary .cta b{display:inline;font-family:var(--f-body);font-size:inherit;font-weight:600;margin:0}
+@page{size:Letter;margin:.4in .5in}
+@media print{:root{--bg:#fff;--paper:#fff;--ink:#0F1A2B;--muted:#556275;--line:#D8DEE7;--accent:#1F4FD8}
+  body{padding:0;font-size:10px}.bar{display:none}.page{border:0;padding:0;gap:10px;max-width:none}
+  header.cv h1{font-size:26px}.hook b{font-size:14px}.row{padding-block:3px}.prob,.how,.note,.role,.time{font-size:9.5px}}
 </style>
-
 </head>
 <body>
+<div class="bar"><a href="/">← tom.klack.io</a><a class="btn primary" href="Tom_Ktorza_Resume.pdf" download>Download PDF</a></div>
 <main class="page">
   <header class="cv">
     <h1>Tom Ktorza</h1>
-    <div class="role">Startup Operating Partner · New York</div>
-    <div class="contact">
-      <span>Founder, Klack</span>
-      <a href="mailto:tom@klack.io"><b>tom@klack.io</b></a>
-      <a href="https://www.linkedin.com/in/tom-ktorza-8a8b91113/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
+    <div class="title">Startup Operating Partner · New York</div>
+    <div class="contact"><a href="tel:+16463058139">+1 (646) 305-8139</a><span>·</span><a href="mailto:tom@klack.io">tom@klack.io</a><span>·</span><a href="https://www.linkedin.com/in/tom-ktorza-8a8b91113/" target="_blank" rel="noopener">LinkedIn</a><span>·</span><a href="/">tom.klack.io</a></div>
   </header>
-
-  <div class="summary">
-    <span class="hook">Something's stuck and nobody knows why. I find out, and I fix it.</span>
-    Ten years building my own companies, and stepping into 30+ others at the critical moment.<br>
-    I don't just advise, I do the work: I've rescued 15+ broken products, built teams from scratch, rebuilt sales and pricing, and settled conflicts between partners.
-    <div class="situ"><h2>When founders call me</h2>
-      <ul>
-        <li>Your launch has been "two weeks away" for six months.</li>
-        <li>Your customers sign up, then leave.</li>
-        <li>Sales blames tech. Tech blames sales.</li>
-        <li>Your tech is incredible. Nobody's buying it yet.</li>
-        <li>You've pivoted once, and you're thinking about doing it again.</li>
-      </ul>
-    </div>
-    <span class="cta"><b>Tell me what's stuck:</b> <a href="https://tom.klack.io">tom.klack.io</a></span>
-  </div>
-
+  <div class="hook"><b>Something's stuck and nobody knows why. I find out, and I fix it.</b><p>Ten years building my own companies, and stepping into 30+ others at the critical moment.</p></div>
   <section>
-    <h2>Experience</h2>
-
-    <div class="job">
-      <div class="head"><h3>Klack <span>· Founder &amp; CEO · Paris, then New York</span></h3><div class="when">2019 · Present</div></div>
-      <p class="ctx">Operating partner work inside startups and industrial groups, from early-stage to established.</p>
-      <ul>
-        <li><b>A fundraise saved one week before signing.</b> The product was broken. I took over, and we fixed it in days. They closed their round on schedule.</li>
-        <li><b>A consulting firm's method turned into an algorithm</b> that beat its own consultants (Klack's pricing product, as CTO then CEO).</li>
-        <li><b>A CRM stuck for two years, delivered in one sprint.</b> I froze the scope and got the client and its agency working together again.</li>
-        <li><b>A SaaS architecture rebuilt in 10 days</b>, without slowing development.</li>
-        <li><b>An energy renovation group growing fast with nothing behind it.</b> I realigned leadership and teams, then built its tech, marketing and sales department from scratch, with its lead engine.</li>
-        <li><b>A funded SaaS bleeding users:</b> cause found in my first audit, then a recovery plan covering product, offer and go-to-market.</li>
-        <li><b>A broken e-commerce site back online</b>, with hosting costs cut by 3 to 4x.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="head"><h3>Styleep <span>· Co-founder &amp; CEO</span></h3><div class="when">2021 · 2025</div></div>
-      <ul>
-        <li>Salons couldn't find hairdressers. I started with a spreadsheet and a phone, and built the staffing platform that 250+ salons and 400+ hairdressers signed up to.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="head"><h3>Independent consultant</h3><div class="when">2016 · 2019</div></div>
-      <p class="ctx">Advised and ran product and tech for startups and large groups.</p>
-      <ul>
-        <li><b>Canal+</b>: 4K set-top box and Samsung and LG TV apps, inside a senior team.</li>
-        <li><b>An AI product recognition app</b>, from specs to a live demo at CES Las Vegas.</li>
-        <li><b>A national nonprofit</b>, advised and operated since 2017: website, intranet and internal tools.</li>
-        <li>Offered a CTO role at a health startup before graduating. Declined.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <div class="head"><h3>Other ventures</h3><div class="when">2023 · 2026</div></div>
-      <ul>
-        <li><b>Klarn</b> · Founder · 2026. Helps startups secure non-dilutive funding. First mandate signed 18 days after launch.</li>
-        <li><b>Passoire.io</b> · Co-founder · 2023 · 2024. Climate fintech financing energy renovation, with AI scoring. Selected by 42's incubator at Station F.</li>
-        <li><b>Backed by 3 French government innovation grants and the Wilco accelerator.</b></li>
-      </ul>
-    </div>
-  </section>
-
-  <div class="duo">
-  <section>
-    <h2>Education</h2>
-    <div class="small"><b>42 Paris</b>, 2015 · 2019<br>Architect in digital technologies, state-certified.<br>Joined with no coding background.<br>First to crack a cybersecurity project no student had solved in a year.</div>
+    <div class="co"><h2>Klack <span>· Founder &amp; CEO · Paris, then New York</span></h2><span class="when">2019 · Present</span></div>
+    <div class="cols"><span>Role</span><span>Time to result</span></div>
+      <div class="row"><span class="sec">Media tech</span><div class="txt"><p class="res">€2M round closed on schedule</p><p class="prob">Product broke days before the investor demo. Fixed in 3 days.</p><p class="how"><b>How:</b> Brought in a senior engineer, ran the fix myself.</p></div><span class="role">Interim lead</span><span class="time">1 week</span></div>
+      <div class="row"><span class="sec">Energy</span><div class="txt"><p class="res">Tech and marketing set up, from CRM to lead gen</p><p class="prob">Fast-growing group needing structure.</p><p class="how"><b>How:</b> Realigned leadership, wired lead gen into the CRM.</p></div><span class="role">Operating partner</span><span class="time">3 months</span></div>
+      <div class="row"><span class="sec">Industrial</span><div class="txt"><p class="res">Delivered in one sprint, after two years stuck</p><p class="prob">CRM blocked between client and agency.</p><p class="how"><b>How:</b> Mediated, froze new features, scoped one sprint.</p></div><span class="role">Mediator &amp; lead</span><span class="time">2 weeks</span></div>
+      <div class="row"><span class="sec">Construction</span><div class="txt"><p class="res">Turnaround plan, no new money needed</p><p class="prob">Funded SaaS losing users. Everyone had a different theory.</p><p class="how"><b>How:</b> Interviewed staff, engineers, ex-partners and customers.</p></div><span class="role">Turnaround advisor</span><span class="time">1 week</span></div>
+      <div class="row"><span class="sec">Accounting</span><div class="txt"><p class="res">Beta live with first users, architecture rebuilt</p><p class="prob">Built on a spec that no longer fit.</p><p class="how"><b>How:</b> Rewrote the spec, brought in two senior engineers.</p></div><span class="role">Project lead</span><span class="time">10 days</span></div>
+      <div class="row"><span class="sec">Consulting</span><div class="txt"><p class="res">One algorithm beat the firm's own consultants</p><p class="prob">Pricing studies were done by hand, case by case.</p><p class="how"><b>How:</b> Modeled the consultants' method, then automated it.</p><p class="note">Backed by a French government grant and the Wilco accelerator.</p></div><span class="role">CTO, then CEO</span><span class="time">1 year</span></div>
   </section>
   <section>
-    <h2>Languages</h2>
-    <div class="small">French (native), English (professional)</div>
+    <div class="co"><h2>Styleep <span>· Co-founder &amp; CEO · French government grant</span></h2><span class="when">2021 · 2025</span></div>
+      <div class="row"><span class="sec">Beauty</span><div class="txt"><p class="res">250+ salons and 400+ hairdressers signed up</p><p class="prob">Salons couldn't find hairdressers. Started with a spreadsheet.</p><p class="how"><b>How:</b> Cold calls, then the platform, marketing and a sales hire.</p></div><span class="role">Co-founder &amp; CEO</span><span class="time">4 years</span></div>
   </section>
-  </div>
+  <section>
+    <div class="co"><h2>Independent consultant</h2><span class="when">2016 · 2019</span></div>
+      <div class="row"><span class="sec">Retail</span><div class="txt"><p class="res">CES Las Vegas demo, called a success by the client</p><p class="prob">AI to recognize products on shelves. Led from specs to demo.</p></div><span class="role">Project lead</span><span class="time">3 months</span></div>
+      <div class="row"><span class="sec">Social data</span><div class="txt"><p class="res">Demo-ready in under a week, then kept on 6 months</p><p class="prob">AI startup mapping emotions on Twitter.</p></div><span class="role">Project lead</span><span class="time">6 months</span></div>
+      <div class="row"><span class="sec">Media</span><div class="txt"><p class="res">TV apps shipped for France's top pay-TV group</p><p class="prob">Set-top box and Samsung TV apps, inside a senior team.</p></div><span class="role">Consultant</span><span class="time">6 months</span></div>
+  </section>
+  <section class="plain"><h2>Also founded</h2>
+    <p><b>Passoire.io</b>, climate fintech funding home energy retrofits, selected by 42's incubator at Station F.</p>
+    <p><b>Klarn</b>, non-dilutive funding advisory. First client signed 18 days after launch.</p>
+  </section>
+  <section class="plain"><h2>Education</h2>
+    <p><b>42 Paris</b> (selective tech school), 2015 · 2019. State-certified architect in digital technologies.</p>
+    <p>Joined with no coding background, first to crack a cybersecurity project no student had solved in a year.</p>
+  </section>
+  <section class="plain"><h2>Skills &amp; tools</h2>
+    <p><b>Skills:</b> Diagnosis, turnarounds, go-to-market, fundraising, product &amp; tech, AI automation</p>
+    <p><b>Tools &amp; tech:</b> Notion, Jira, Figma, HubSpot, Zapier, Claude, GitHub, AWS, Docker</p>
+    <p><b>Languages:</b> French (native), English</p>
+  </section>
 </main>
 </body>
 </html>
